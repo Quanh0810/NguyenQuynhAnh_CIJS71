@@ -17,7 +17,7 @@ class ActiveConversationTitle {
     this.$container.appendChild(this.$title);
     this.$container.appendChild(this.$member);
 
-    chatContainer.appendChild(this.$container);
+    return this.$container;
   }
 }
 
