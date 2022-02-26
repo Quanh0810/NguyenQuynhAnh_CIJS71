@@ -1,13 +1,30 @@
+import { mockMessage } from "../assets/css/mockData.js";
+import MessageItem from "./MessageItem.js";
 class MessageList {
-    constructor() {
-      this.$container = document.createElement("div");
-      this.$container.setAttribute("class", "flex flex-1 bg-blue-500");
-      this.$container.textContent = "MessageList";
-    }
-  
-    render() {
-      return this.$container;
-    }
+  constructor() {
+    this.$container = document.createElement("div");
+    this.$container.setAttribute("class", "flex flex-1 flex-col p-4");
+
+    this.renderMessages();
   }
+
+
   
-  export default MessageList;
+
+  renderMessages() {
+    mockMessage.forEach((msg) => {
+      const messageItem = new MessageItem(msg);
+      this.$container.appendChild(messageItem.render());
+    });
+  }
+
+  setConversation(conversation) {
+    this.$container.textContent = conversation.conversationName;
+  }
+
+  render() {
+    return this.$container;
+  }
+}
+
+export default MessageList;

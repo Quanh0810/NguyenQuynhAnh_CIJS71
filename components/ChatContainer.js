@@ -3,6 +3,7 @@ import ChatInput from "./ChatInput.js";
 import MessageList from "./MessageList.js";
 
 class ChatContainer {
+  _activeConversation;
   constructor() {
     this.$chatContainer = document.createElement("div");
     this.$chatContainer.setAttribute(
@@ -13,6 +14,11 @@ class ChatContainer {
     this.$activeConversationTitle = new ActiveConversationTitle();
     this.$chatInput = new ChatInput();
     this.$messageList = new MessageList();
+  }
+
+  setActiveConversation(activeConversation) {
+    this.$activeConversationTitle.setConversation(activeConversation);
+    this.$messageList.setConversation(activeConversation);
   }
 
   render(mainContainer) {
